@@ -1,4 +1,5 @@
 # Support Wheel of Fate
+[![Build Status](https://travis-ci.org/Muhammad-Umer/support-wheel-of-fate.svg?branch=master)](https://travis-ci.org/Muhammad-Umer/support-wheel-of-fate)
 
 This project intends to provide a simple approach to generate a schedule for all engineers to support any engineering's core business.
 
