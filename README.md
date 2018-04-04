@@ -27,6 +27,21 @@ Apart from general settings, use the VM options provided below:
 -Ddatasource.database.config.pool.size=your-poolSize
 ```
 
+After execution the information regarding the repository would be available.
+```
+{
+    "app": {
+        "version": "13.01.01",
+        "description": "Support wheel of fate - generate a schedule for all engineers to support any engineering's core business.",
+        "name": "Support-Wheel-Of-Fate "
+    },
+    "build": {
+        "artifact": "support-wheel-of-fate",
+        "name": "support-wheel-of-fate-13.01.01",
+        "version": "13.01.01"
+    }
+}
+```
 ## Built With
 
 * [IntelliJ](https://www.jetbrains.com/idea/) - IDE used for Development
