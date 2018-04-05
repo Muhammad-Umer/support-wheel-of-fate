@@ -9,4 +9,6 @@ import java.util.List;
  */
 public interface EngineerRepository extends MainRepository<Engineer>{
     List<Engineer> getEngineers(Integer limit);
+
+    List<Engineer> getRandomEngineers(Integer limit);
 }

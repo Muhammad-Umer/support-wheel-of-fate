@@ -29,7 +29,5 @@ public class Constants {
 
     public static Set<Integer> engineersDoneForDay = new HashSet<>();
 
-    public static Map<Integer, Integer> engineersRandomizer  = new HashMap<>();
-
     private Constants(){}
 }

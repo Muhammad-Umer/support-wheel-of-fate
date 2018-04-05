@@ -2,8 +2,12 @@ package org.engineering.support.wheel.fate.infrastructure.persistance.jpa.reposi
 
 import org.engineering.support.wheel.fate.infrastructure.persistance.jpa.model.Shift;
 
+import java.sql.Date;
+import java.util.List;
+
 /**
  * Created by umer on 4/3/2018.
  */
 public interface ShiftRepository extends MainRepository<Shift>{
+    List<Shift> getShiftsOfSchedule(Date date, Integer limit);
 }

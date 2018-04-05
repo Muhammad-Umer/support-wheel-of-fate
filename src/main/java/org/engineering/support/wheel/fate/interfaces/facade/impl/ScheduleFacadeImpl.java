@@ -2,6 +2,8 @@ package org.engineering.support.wheel.fate.interfaces.facade.impl;
 
 import org.engineering.support.wheel.fate.infrastructure.persistance.jpa.model.Engineer;
 import org.engineering.support.wheel.fate.infrastructure.persistance.jpa.model.Shift;
+import org.engineering.support.wheel.fate.interfaces.dto.ScheduleDto;
+import org.engineering.support.wheel.fate.interfaces.dto.ShiftDto;
 import org.engineering.support.wheel.fate.interfaces.facade.EngineerFacade;
 import org.engineering.support.wheel.fate.interfaces.facade.ScheduleFacade;
 import org.engineering.support.wheel.fate.service.ScheduleService;
@@ -73,5 +75,22 @@ public class ScheduleFacadeImpl implements ScheduleFacade {
         }catch (Exception e){
             return new Response<>(HttpStatus.INTERNAL_SERVER_ERROR.value(), e);
         }
+    }
+
+    @Override
+    public ScheduleDto getSchedule(Timestamp timestamp) {
+        int dayOfTheWeek = timestamp == null ? LocalDate.now().getDayOfWeek().getValue() :
+                LocalDateTime.ofInstant(timestamp.toInstant(), ZoneOffset.UTC).toLocalDate().getDayOfWeek().getValue();
+
+        Integer numberOfShifts = constants.getWeeksPerSchedule() * constants.getTotalDaysInWeek() * constants.getShiftsPerDay();
+        Date previousSunday = Date.valueOf(LocalDate.now()
+                .minusDays(dayOfTheWeek));
+
+        List<Shift> shifts =  scheduleService.getSchedule(previousSunday, numberOfShifts);
+
+        ScheduleDto scheduleDto = new ScheduleDto();
+        scheduleDto.setShiftDtos(scheduleDto.getSchedule(shifts));
+
+        return scheduleDto;
     }
 }

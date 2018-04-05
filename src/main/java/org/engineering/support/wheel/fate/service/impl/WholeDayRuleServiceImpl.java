@@ -28,7 +28,6 @@ public class WholeDayRuleServiceImpl implements RuleService {
                 countPerEngineer++;
                 if(countPerEngineer > 1){
                     Constants.engineersDoneForDay.add(engineerId);
-                    Constants.engineersRandomizer.remove(engineerId - 1);
                     return false;
                 }
             }

@@ -11,6 +11,8 @@ import org.engineering.support.wheel.fate.utilities.Constants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Date;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
@@ -33,31 +35,25 @@ public class ScheduleServiceImpl implements ScheduleService{
     @Override
     public boolean generateSchedule(Integer numberOfEngineers, Integer numberOfShifts, List<Shift> shifts) throws Exception {
         Constants.engineersDoneForDay.clear();
-        List<Engineer> engineers = engineerService.getEngineers(numberOfEngineers);
-        Constants.engineersRandomizer = engineers.stream()
-                .collect(Collectors.toMap(e -> e.getId() - 1, Engineer::getId));
+        List<Engineer> engineers = engineerService.getRandomEngineers(numberOfEngineers);
         if(!CollectionUtils.isEmpty(engineers)){
-            for(int i = 0; i < numberOfShifts; i++){
-                boolean valid = false;
-                while (!valid){
-                    int randomIndex = new Random().nextInt(engineers.size());
-                    if(Constants.engineersRandomizer.containsKey(randomIndex)){
-                        valid = evaluatorService.evaluate(i,
-                                engineers.get(randomIndex).getId(), shifts);
-                        if(valid){
-                            shifts.get(i).setEngineer(engineers.get(randomIndex));
-                        }
-                    }
+            if(numberOfShifts / engineers.size() != 2){
+                return false;
+            }else{
+                for(int i = 0; i < engineers.size(); i++){
+                    shifts.get(i).setEngineer(engineers.get(i));
                 }
-            }
-            Constants.engineersDoneForDay.clear();
-            if(numberOfShifts / engineers.size() > 2){
-                int difference = numberOfShifts - engineers.size();
-                for(int i = shifts.size(); i > difference; i--){
-                    int randomIndex = new Random().nextInt(engineers.size());
-                    boolean valid = evaluatorService.evaluate(i, engineers.get(randomIndex).getId(), shifts);
-                    if(valid){
-                        shifts.get(i).setEngineer(engineers.get(randomIndex));
+                Collections.shuffle(engineers);
+                while (shifts.get(shifts.size() - 1).getEngineer() == null){
+                    for(int i = engineers.size(); i < numberOfShifts; i++){
+                        for(int j = 0; j < engineers.size(); j++){
+                            boolean valid = evaluatorService.evaluate(i,
+                                    engineers.get(j).getId(), shifts);
+                            if(valid){
+                                shifts.get(i).setEngineer(engineers.get(j));
+                                break;
+                            }
+                        }
                     }
                 }
             }
@@ -65,5 +61,12 @@ public class ScheduleServiceImpl implements ScheduleService{
         shiftService.storeShifts(shifts);
 
         return true;
+    }
+
+
+    @Override
+    public List<Shift> getSchedule(Date date, Integer numberOfShifts) {
+        List<Shift> shifts = shiftService.getShiftsOfSchedule(date, numberOfShifts);
+        return shifts;
     }
 }

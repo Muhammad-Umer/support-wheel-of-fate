@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.transaction.Transaction;
+import java.sql.Date;
 import java.util.List;
 
 /**
@@ -27,5 +28,10 @@ public class ShiftServiceImpl implements ShiftService {
         for(Shift shift : shifts){
             shiftRepository.persist(shift);
         }
+    }
+
+    @Override
+    public List<Shift> getShiftsOfSchedule(Date date, Integer limit) {
+        return shiftRepository.getShiftsOfSchedule(date, limit);
     }
 }

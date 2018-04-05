@@ -8,6 +8,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import java.sql.Date;
@@ -18,6 +20,9 @@ import java.sql.Timestamp;
  */
 @Entity
 @Table(name = "shift")
+@NamedQueries({
+        @NamedQuery(name = "getShiftsOfSchedule", query = "select s from Shift s where s.shiftDate > :shiftDate")
+})
 @Setter
 public class Shift extends BaseEntity{
     private Engineer engineer;

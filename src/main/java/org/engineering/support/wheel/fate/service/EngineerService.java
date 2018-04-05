@@ -10,5 +10,7 @@ import java.util.List;
 public interface EngineerService {
     List<Engineer> getEngineers(Integer limit) throws Exception;
 
+    List<Engineer> getRandomEngineers(Integer limit) throws Exception;
+
     Engineer getEngineer(Integer engineerId) throws Exception;
 }

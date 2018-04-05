@@ -13,12 +13,19 @@ import java.util.List;
  */
 @Service
 public class EngineerServiceImpl implements EngineerService {
+
     @Autowired
     EngineerRepository engineerRepository;
 
     @Override
     public List<Engineer> getEngineers(Integer limit) throws Exception{
         return engineerRepository.getEngineers(limit);
+    }
+
+
+    @Override
+    public List<Engineer> getRandomEngineers(Integer limit) throws Exception {
+        return engineerRepository.getRandomEngineers(limit);
     }
 
     @Override

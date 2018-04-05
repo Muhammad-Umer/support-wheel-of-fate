@@ -2,6 +2,7 @@ package org.engineering.support.wheel.fate.service;
 
 import org.engineering.support.wheel.fate.infrastructure.persistance.jpa.model.Shift;
 
+import java.sql.Date;
 import java.util.List;
 
 /**
@@ -9,4 +10,5 @@ import java.util.List;
  */
 public interface ShiftService {
     void storeShifts(List<Shift> shifts) throws Exception;
+    List<Shift> getShiftsOfSchedule(Date date, Integer limit);
 }

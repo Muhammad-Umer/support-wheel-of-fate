@@ -1,5 +1,6 @@
 package org.engineering.support.wheel.fate.interfaces.controllers;
 
+import org.engineering.support.wheel.fate.interfaces.dto.ScheduleDto;
 import org.engineering.support.wheel.fate.interfaces.facade.ScheduleFacade;
 import org.engineering.support.wheel.fate.utilities.Response;
 import org.jsondoc.core.annotation.ApiVersion;
@@ -23,5 +24,10 @@ public class ScheduleController {
     @RequestMapping(value = "generate", method = RequestMethod.GET)
     public Response generateSchedule(@PathVariable Integer apiVersion) {
         return scheduleFacade.generateSchedule(null);
+    }
+
+    @RequestMapping(value = "get", method = RequestMethod.GET)
+    public Response<ScheduleDto> getSchedule(@PathVariable Integer apiVersion) {
+        return new Response<>(scheduleFacade.getSchedule(null));
     }
 }

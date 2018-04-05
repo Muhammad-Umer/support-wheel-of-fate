@@ -26,4 +26,18 @@ public class EngineerRepositoryImpl extends MainRepositoryImpl<Engineer> impleme
             return null;
         }
     }
+
+    @Override
+    public List<Engineer> getRandomEngineers(Integer limit) {
+        String randomEngineersQuery = "SELECT * FROM engineer ORDER BY RAND() LIMIT :limit";
+
+        Query query = entityManager.createNativeQuery(randomEngineersQuery, Engineer.class);
+        query.setParameter("limit", limit);
+
+        try {
+            return query.getResultList();
+        } catch (NoResultException e) {
+            return null;
+        }
+    }
 }
