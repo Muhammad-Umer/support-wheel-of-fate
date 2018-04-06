@@ -5,6 +5,7 @@ import org.engineering.support.wheel.fate.infrastructure.persistance.jpa.model.S
 import org.engineering.support.wheel.fate.interfaces.facade.ScheduleFacade;
 import org.engineering.support.wheel.fate.interfaces.facade.impl.ScheduleFacadeImpl;
 import org.engineering.support.wheel.fate.service.ScheduleService;
+import org.engineering.support.wheel.fate.service.ShiftService;
 import org.engineering.support.wheel.fate.utilities.Constants;
 import org.engineering.support.wheel.fate.utilities.Response;
 import org.junit.Test;
@@ -19,6 +20,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.hamcrest.CoreMatchers.any;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.mockito.Mockito.times;
@@ -35,6 +37,9 @@ public class ScheduleFacadeImplTest {
     ScheduleService scheduleService;
 
     @Mock
+    ShiftService shiftService;
+
+    @Mock
     Constants constants;
 
     @InjectMocks
@@ -48,6 +53,7 @@ public class ScheduleFacadeImplTest {
         when(constants.getTotalDaysInWeek()).thenReturn(5);
         when(constants.getShiftsPerDay()).thenReturn(2);
         when(constants.getWeeksPerSchedule()).thenReturn(1);
+        when(shiftService.getShiftsByDate(new Date(1))).thenReturn(getShift());
         when(scheduleService.generateSchedule(1, 1, mockShifts)).thenReturn(true);
 
         Response actualResponse = scheduleFacade.generateSchedule(1L);
