@@ -31,10 +31,4 @@ public class EngineerController {
     public Response<List<Engineer>> getEngineers(@PathVariable Integer apiVersion, @PathVariable Integer limit) {
         return new Response<>(engineerFacade.getEngineers(limit));
     }
-
-    @RequestMapping(value = "schedule", method = RequestMethod.GET)
-    public void schedule(@PathVariable Integer apiVersion) {
-        scheduleFacade.generateSchedule(null);
-    }
-
 }

@@ -43,6 +43,16 @@ After execution the information regarding the repository would be available.
     }
 }
 ```
+
+## Schedule UI
+When a schedule is available for the week of the selected date.
+
+![alt text](/src/main/resources/screenshots/schedule.png "Schedule available")
+
+When no schedule is stored for the week of the selected date.
+
+![alt text](/src/main/resources/screenshots/no-schedule.png "Schedule not available")
+
 ## Built With
 
 * [IntelliJ](https://www.jetbrains.com/idea/) - IDE used for Development

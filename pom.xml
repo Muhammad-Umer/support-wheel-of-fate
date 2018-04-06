@@ -6,7 +6,7 @@
 
     <groupId>org.engineering</groupId>
     <artifactId>support-wheel-of-fate</artifactId>
-    <version>14.01.01</version>
+    <version>14.01.02</version>
     <name>support-wheel-of-fate</name>
     <packaging>war</packaging>
 
