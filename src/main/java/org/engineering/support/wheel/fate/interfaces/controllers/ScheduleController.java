@@ -21,13 +21,19 @@ public class ScheduleController {
     @Autowired
     ScheduleFacade scheduleFacade;
 
-    @RequestMapping(value = "generate", method = RequestMethod.GET)
-    public Response generateSchedule(@PathVariable Integer apiVersion) {
-        return scheduleFacade.generateSchedule(null);
+    @RequestMapping(value = "generate/{timestamp}", method = RequestMethod.POST)
+    public Response generateSchedule(@PathVariable Integer apiVersion, @PathVariable Long timestamp) {
+        return scheduleFacade.generateSchedule(timestamp);
     }
 
-    @RequestMapping(value = "get", method = RequestMethod.GET)
-    public Response<ScheduleDto> getSchedule(@PathVariable Integer apiVersion) {
-        return new Response<>(scheduleFacade.getSchedule(null));
+    @RequestMapping(value = "get/{timestamp}", method = RequestMethod.GET)
+    public Response<ScheduleDto> getSchedule(@PathVariable Integer apiVersion, @PathVariable Long timestamp) {
+        return new Response<>(scheduleFacade.getSchedule(timestamp));
     }
+
+    @RequestMapping(value = "delete/{timestamp}", method = RequestMethod.DELETE)
+    public Response deleteSchedule(@PathVariable Integer apiVersion, @PathVariable Long timestamp) {
+        return scheduleFacade.deleteSchedule(timestamp);
+    }
+
 }

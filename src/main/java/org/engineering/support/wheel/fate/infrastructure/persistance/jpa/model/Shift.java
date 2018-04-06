@@ -21,7 +21,8 @@ import java.sql.Timestamp;
 @Entity
 @Table(name = "shift")
 @NamedQueries({
-        @NamedQuery(name = "getShiftsOfSchedule", query = "select s from Shift s where s.shiftDate > :shiftDate")
+        @NamedQuery(name = "getShiftsOfSchedule", query = "select s from Shift s where s.shiftDate > :shiftDate"),
+        @NamedQuery(name = "getShiftsByDate", query = "select s from Shift s where s.shiftDate = :shiftDate")
 })
 @Setter
 public class Shift extends BaseEntity{

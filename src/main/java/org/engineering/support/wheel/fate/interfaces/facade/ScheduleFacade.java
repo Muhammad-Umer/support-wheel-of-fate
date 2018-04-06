@@ -11,6 +11,7 @@ import java.util.List;
  * Created by umer on 4/3/2018.
  */
 public interface ScheduleFacade {
-    Response generateSchedule(Timestamp timestamp);
-    ScheduleDto getSchedule(Timestamp timestamp);
+    Response generateSchedule(Long timestamp);
+    ScheduleDto getSchedule(Long timestamp);
+    Response deleteSchedule(Long timestamp);
 }

@@ -10,4 +10,6 @@ import java.util.List;
  */
 public interface ShiftRepository extends MainRepository<Shift>{
     List<Shift> getShiftsOfSchedule(Date date, Integer limit);
+    Shift getShiftsByDate(Date date);
+    Integer deleteSchedule(Date date, Integer limit);
 }

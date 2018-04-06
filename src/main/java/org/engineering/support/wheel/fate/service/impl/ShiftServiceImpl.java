@@ -34,4 +34,15 @@ public class ShiftServiceImpl implements ShiftService {
     public List<Shift> getShiftsOfSchedule(Date date, Integer limit) {
         return shiftRepository.getShiftsOfSchedule(date, limit);
     }
+
+    @Override
+    public Shift getShiftsByDate(Date date) {
+        return shiftRepository.getShiftsByDate(date);
+    }
+
+    @Override
+    @Transactional(value = "transactionManager", propagation = Propagation.REQUIRED)
+    public Integer deleteSchedule(Date date, Integer limit) {
+        return shiftRepository.deleteSchedule(date, limit);
+    }
 }

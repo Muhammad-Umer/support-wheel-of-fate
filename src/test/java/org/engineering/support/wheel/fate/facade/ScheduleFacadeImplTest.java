@@ -50,7 +50,7 @@ public class ScheduleFacadeImplTest {
         when(constants.getWeeksPerSchedule()).thenReturn(1);
         when(scheduleService.generateSchedule(1, 1, mockShifts)).thenReturn(true);
 
-        Response actualResponse = scheduleFacade.generateSchedule(new Timestamp(1));
+        Response actualResponse = scheduleFacade.generateSchedule(1L);
 
         assertThat(actualResponse.getData(), is("The schedule was not generated"));
         verify(scheduleService, times(0))

@@ -5,6 +5,7 @@ import org.engineering.support.wheel.fate.infrastructure.persistance.jpa.reposit
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.NoResultException;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import java.sql.Date;
 import java.util.List;
@@ -24,6 +25,34 @@ public class ShiftRepositoryImpl extends MainRepositoryImpl<Shift> implements Sh
         try {
             return query.getResultList();
         } catch (NoResultException e) {
+            return null;
+        }
+    }
+
+    @Override
+    public Shift getShiftsByDate(Date date) {
+        TypedQuery<Shift> query = entityManager.createNamedQuery("getShiftsByDate", Shift.class);
+        query.setParameter("shiftDate", date);
+        query.setFirstResult(0);
+        query.setMaxResults(1);
+        try {
+            return query.getSingleResult();
+        } catch (NoResultException e) {
+            return null;
+        }
+    }
+
+    @Override
+    public Integer deleteSchedule(Date date, Integer limit) {
+        String deleteScheduleQuery = "DELETE FROM shift WHERE shift_date > :date ORDER BY id ASC LIMIT :limit";
+
+        Query query = entityManager.createNativeQuery(deleteScheduleQuery, Shift.class);
+        query.setParameter("date", date);
+        query.setParameter("limit", limit);
+
+        try {
+            return query.executeUpdate();
+        } catch (Exception e) {
             return null;
         }
     }

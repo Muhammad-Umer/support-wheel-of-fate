@@ -11,4 +11,6 @@ import java.util.List;
 public interface ShiftService {
     void storeShifts(List<Shift> shifts) throws Exception;
     List<Shift> getShiftsOfSchedule(Date date, Integer limit);
+    Shift getShiftsByDate(Date date);
+    Integer deleteSchedule(Date date, Integer limit);
 }
