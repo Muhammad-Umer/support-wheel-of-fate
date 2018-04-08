@@ -28,7 +28,9 @@ Apart from general settings, use the VM options provided below:
 -Ddatasource.database.config.pool.size=your-poolSize
 ```
 
-After execution the information regarding the repository would be available.
+In database (which is provided above), execute the scripts provided in _**/resources/sql**_ folder to set up tables accordingly.
+
+After execution of the project, the information regarding the repository would be available.
 ```
 {
     "app": {
@@ -76,6 +78,7 @@ For simplicity, a JSP page is added to this project to depict the working condit
 * **SpringWebMVCConfiguration**
 * **ViewController**
 * **/resources/public folder**
+* **/resources/screenshots folder**
 
 Also change the content of _**index.jsp**_ so that the application is redirected to _/info_ directly. The content is provided below:
 ```
