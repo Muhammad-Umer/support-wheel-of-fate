@@ -44,6 +44,23 @@ After execution the information regarding the repository would be available.
 }
 ```
 
+## Main Functionality
+The frontend UI is controlled by 3 APIs which are relevant to Schedules only and are exposed via **ScheduleController**.
+
+* **v1/schedule/get/{timestamp}**
+* **v1/schedule/generate/{timestamp}**
+* **v1/schedule/delete/{timestamp}**
+
+where **_timestamp_** is to be passed to control the schedule for that particular week.
+
+## Rules Defined
+
+* _An engineer cannot work on consecutive days._
+* _An engineer cannot work for more than 1 day._
+* _An engineer cannot work on more than 1 shift on a single day._
+
+The rules can be changed, added or extended in the future as well. 
+
 ## Schedule UI
 When a schedule is available for the week of the selected date.
 
@@ -52,6 +69,27 @@ When a schedule is available for the week of the selected date.
 When no schedule is stored for the week of the selected date.
 
 ![alt text](/src/main/resources/screenshots/no-schedule.png "Schedule not available")
+
+## Side Note
+For simplicity, a JSP page is added to this project to depict the working condition of the project. However the frontend could be easily decoupled from the project as well so that this could be deployed as an standalone service. Just delete the following files/folders.
+
+* **SpringWebMVCConfiguration**
+* **ViewController**
+* **/resources/public folder**
+
+Also change the content of _**index.jsp**_ so that the application is redirected to _/info_ directly. The content is provided below:
+```
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <meta http-equiv="REFRESH" content="0;url=info">
+</head>
+<body>
+</body>
+</html>
+
+```
 
 ## Built With
 
@@ -63,7 +101,6 @@ When no schedule is stored for the week of the selected date.
 
 * **Muhammad Umer** 
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
 ## License
 
