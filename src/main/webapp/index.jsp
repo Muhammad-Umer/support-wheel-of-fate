@@ -22,7 +22,7 @@
 <body ng-app="supportWheelOfFateApp">
 <div class="headerWrap">
           <span class="headingWrap">
-            <label class="heading">Support Wheel of Fate</label>
+            <h1 class="heading">Support Wheel of Fate</h1>
           </span>
     <span>
             <img class="wheelImg" src="assets/support-wheel.jpg">

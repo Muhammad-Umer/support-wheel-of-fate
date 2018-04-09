@@ -1,15 +1,17 @@
 .calenderWrap{
   float: left;
-  width: 30%
+  width: 30%;
 }
 
 .gridWrap{
-  float: right;
-  width: 60%
+  float: left;
+  width: 65%;
+  margin-left: 3%;
+  box-shadow: 0px 0px 20px -8px #000000;
 }
 
 .mainWrap{
-  margin-top: 60px;
+  margin-top: 20px;
   margin-right: 30px;
   margin-left: 30px;
 }
@@ -22,21 +24,21 @@
 
 .calander{
   display:inline-block;
-  margin-left: 40px;
+  margin-left: 50px;
 }
 
 .mainButtonWrap{
-  margin-left: 13px;
 }
 
 .mainButtonDanger{
   background-color: #c60303 !important;
+  margin-left: 50px;
 }
 
 .mainButton {
   display: inline-block;
   border-radius: 4px;
-  background-color: #2a13ef;
+  background-color: #66CCFF;
   border: none;
   color: #FFFFFF;
   text-align: center;
@@ -49,12 +51,12 @@
 
 .headingWrap{
   float: right;
-  width: 73%;
+  width: 66%;
 }
 
 .heading{
   color: #FFFFFF;
-  font-size: 65px;
+  text-transform: uppercase;
 }
 
 .wheelImg{
@@ -64,11 +66,11 @@
 
 .headerWrap{
   width: 100%;
-  background-color: #2a13ef;
+  background-color: #0099CC;
 }
 
 .noScheduleMessage{
-    width: 100%;
-    display: block;
-    font-size: 18px;
+  width: 100%;
+  display: block;
+  font-size: 18px;
 }

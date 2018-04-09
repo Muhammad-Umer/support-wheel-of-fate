@@ -1080,11 +1080,11 @@ html {
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
 }
 body {
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: sans-serif;
     font-size: 14px;
     line-height: 1.42857143;
     color: #333;
-    background-color: #fff
+    background-color: #fff;
 }
 button,
 input,
@@ -1221,8 +1221,8 @@ h6 small {
 h1,
 h2,
 h3 {
-    margin-top: 20px;
-    margin-bottom: 10px
+    margin-top: 34px;
+    margin-bottom: 10px;
 }
 .h1 .small,
 .h1 small,
@@ -1530,7 +1530,7 @@ code,
 kbd,
 pre,
 samp {
-    font-family: Menlo, Monaco, Consolas, "Courier New", monospace
+    font-family: sans-serif;
 }
 code {
     padding: 2px 4px;
@@ -1561,12 +1561,15 @@ pre {
     margin: 0 0 10px;
     font-size: 13px;
     line-height: 1.42857143;
-    color: #333;
+    color: #fff;
     word-break: break-all;
     word-wrap: break-word;
-    background-color: #f5f5f5;
+    background-color: #66CCFF;
     border: 1px solid #ccc;
-    border-radius: 4px
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 16px;
+    text-transform: capitalize;
 }
 pre code {
     padding: 0;
@@ -2353,7 +2356,7 @@ th {
 .table {
     width: 100%;
     max-width: 100%;
-    margin-bottom: 20px
+    margin-bottom: 20px;
 }
 .table>tbody>tr>td,
 .table>tbody>tr>th,
